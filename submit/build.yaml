@@ -1,1 +1,152 @@
-# cloudformation solution goes here
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CloudFormation template for EC2 instance with Ubuntu 24.04 LTS'
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ygu6ax-anomaly-detection
+      NotificationConfiguration:
+        TopicConfigurations:
+          - Event: s3:ObjectCreated:*
+            Topic: !Ref SNSTopic
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: raw/
+                  - Name: suffix
+                    Value: .csv
+
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for EC2 instance allowing SSH and API access
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 76.123.19.70/32
+        - IpProtocol: tcp
+          FromPort: 8000
+          ToPort: 8000
+          CidrIp: 0.0.0.0/0
+
+  ElasticIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+
+  IAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: S3AccessPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:ListBucket
+                Resource: !Sub arn:aws:s3:::${S3Bucket}
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                  - s3:DeleteObject
+                Resource: !Sub arn:aws:s3:::${S3Bucket}/*
+
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref IAMRole
+
+  SNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: ds5220-dp1
+
+  SNSTopicPolicy:
+    Type: AWS::SNS::TopicPolicy
+    Properties:
+      Topics:
+        - !Ref SNSTopic
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: s3.amazonaws.com
+            Action: sns:Publish
+            Resource: !Ref SNSTopic
+            Condition:
+              ArnLike:
+                aws:SourceArn: !Sub arn:aws:s3:::${S3Bucket}
+    
+  SNSTopicSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: HTTP
+      Endpoint: !Sub http://${ElasticIP}:8000/notify
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Sub "{{resolve:ssm:/aws/service/canonical/ubuntu/server/24.04/stable/current/amd64/hvm/ebs-gp3/ami-id}}"
+      InstanceType: t3.micro
+      KeyName: ds5220
+      SecurityGroups:
+        - !Ref SecurityGroup
+      IamInstanceProfile: !Ref InstanceProfile
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 16
+            VolumeType: gp3
+            DeleteOnTermination: true
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -e
+          apt-get update
+          apt-get upgrade -y
+          apt-get install -y curl wget git python3-pip python3-venv
+          
+          export BUCKET_NAME='${S3Bucket}'
+          echo "BUCKET_NAME='${S3Bucket}'" >> /etc/environment
+          
+          git clone https://github.com/nathanctodd/anomaly-detection.git
+          cd anomaly-detection
+          
+          python3 -m venv venv
+          source venv/bin/activate
+          
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          
+          fastapi run app.py
+
+  EIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      InstanceId: !Ref EC2Instance
+      EIP: !Ref ElasticIP
+
+
+Outputs:
+  InstanceId:
+    Description: Instance ID
+    Value: !Ref EC2Instance
+  PublicIp:
+    Description: Public IP address
+    Value: !GetAtt EC2Instance.PublicIp
+  BucketName:
+    Description: S3 Bucket Name
+    Value: !Ref S3Bucket

@@ -14,7 +14,7 @@ BUCKET_NAME = os.environ["BUCKET_NAME"]
 
 
 def generate_batch(n_rows: int = 100, inject_anomalies: bool = True) -> pd.DataFrame:
-    base_time = datetime.utcnow()
+    base_time = datetime.now(datetime.timezone.utc)
 
     data = {
         "timestamp": [
@@ -41,7 +41,7 @@ def generate_batch(n_rows: int = 100, inject_anomalies: bool = True) -> pd.DataF
 
 
 def upload_batch(df: pd.DataFrame):
-    timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%S")
+    timestamp = datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
     key = f"raw/sensors_{timestamp}.csv"
 
     csv_buffer = io.StringIO()
