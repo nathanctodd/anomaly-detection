@@ -6,7 +6,7 @@ import random
 import boto3
 import pandas as pd
 import numpy as np
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 
 s3 = boto3.client("s3")
@@ -14,7 +14,7 @@ BUCKET_NAME = os.environ["BUCKET_NAME"]
 
 
 def generate_batch(n_rows: int = 100, inject_anomalies: bool = True) -> pd.DataFrame:
-    base_time = datetime.now(datetime.timezone.utc)
+    base_time = datetime.now(timezone.utc)
 
     data = {
         "timestamp": [
@@ -41,7 +41,7 @@ def generate_batch(n_rows: int = 100, inject_anomalies: bool = True) -> pd.DataF
 
 
 def upload_batch(df: pd.DataFrame):
-    timestamp = datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
     key = f"raw/sensors_{timestamp}.csv"
 
     csv_buffer = io.StringIO()

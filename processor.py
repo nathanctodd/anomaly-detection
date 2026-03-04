@@ -3,7 +3,7 @@ import json
 import io
 import boto3
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timezone
 
 from baseline import BaselineManager
 from detector import AnomalyDetector
@@ -59,7 +59,7 @@ def process_file(bucket: str, key: str):
         summary = {
             "source_key": key,
             "output_key": output_key,
-            "processed_at": datetime.utcnow().isoformat(),
+            "processed_at": datetime.now(timezone.utc).isoformat(),
             "total_rows": len(df),
             "anomaly_count": anomaly_count,
             "anomaly_rate": round(anomaly_count / len(df), 4) if len(df) > 0 else 0,
@@ -79,11 +79,11 @@ def process_file(bucket: str, key: str):
     except Exception as e:
         print(f"Error processing file s3://{bucket}/{key}: {e}")
         with open("app_errors.log", "a") as log_file:
-            log_file.write(f"{datetime.now(datetime.timezone.utc).isoformat()} - Error processing file s3://{bucket}/{key}: {e}\n")
+            log_file.write(f"{datetime.now(timezone.utc).isoformat()} - Error processing file s3://{bucket}/{key}: {e}\n")
         summary = {
             "source_key": key,
             "output_key": None,
-            "processed_at": datetime.now(datetime.timezone.utc).isoformat(),
+            "processed_at": datetime.now(timezone.utc).isoformat(),
             "total_rows": 0,
             "anomaly_count": 0,
             "anomaly_rate": 0,

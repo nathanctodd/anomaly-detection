@@ -2,7 +2,7 @@
 import json
 import math
 import boto3
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 s3 = boto3.client("s3")
@@ -26,7 +26,7 @@ class BaselineManager:
             return {}
 
     def save(self, baseline: dict):
-        baseline["last_updated"] = datetime.utcnow().isoformat()
+        baseline["last_updated"] = datetime.now(timezone.utc).isoformat()
         s3.put_object(
             Bucket=self.bucket,
             Key=self.baseline_key,
