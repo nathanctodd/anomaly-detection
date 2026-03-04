@@ -151,8 +151,9 @@ resource "aws_instance" "ec2" {
     apt-get upgrade -y
     apt-get install -y curl wget git python3-pip python3-venv
 
-    export BUCKET_NAME='${aws_s3_bucket.bucket.bucket}'
-    echo "BUCKET_NAME='${aws_s3_bucket.bucket.bucket}'" >> /etc/environment
+    export BUCKET_NAME=${aws_s3_bucket.bucket.bucket}
+    echo "BUCKET_NAME=${aws_s3_bucket.bucket.bucket}" >> /etc/environment
+    echo "export BUCKET_NAME=${aws_s3_bucket.bucket.bucket}" >> /home/ubuntu/.bashrc
 
     git clone https://github.com/nathanctodd/anomaly-detection.git
     cd anomaly-detection
@@ -163,7 +164,7 @@ resource "aws_instance" "ec2" {
     pip install --upgrade pip
     pip install -r requirements.txt
 
-    nohup fastapi run app.py &
+    BUCKET_NAME=${aws_s3_bucket.bucket.bucket} nohup fastapi run app.py > app.log 2>&1 &
   EOF
 }
 

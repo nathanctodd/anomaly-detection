@@ -5,7 +5,7 @@ import os
 import boto3
 import pandas as pd
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from fastapi import FastAPI, BackgroundTasks, Request
 from baseline import BaselineManager
 from processor import process_file
@@ -25,7 +25,7 @@ async def handle_sns(request: Request, background_tasks: BackgroundTasks):
     except Exception:
         print("Failed to parse request body as JSON")
         with open("app_errors.log", "a") as log_file:
-            log_file.write(f"{datetime.now(datetime.timezone.utc).isoformat()} - Failed to parse request body: {await request.body()}\n")
+            log_file.write(f"{datetime.now(timezone.utc).isoformat()} - Failed to parse request body: {await request.body()}\n")
         return {"status": "error", "message": "Failed to parse request body"}
     msg_type = request.headers.get("x-amz-sns-message-type")
 
@@ -47,7 +47,7 @@ async def handle_sns(request: Request, background_tasks: BackgroundTasks):
     except Exception as e:
         print(f"Error processing SNS notification: {e}")
         with open("app_errors.log", "a") as log_file:
-            log_file.write(f"{datetime.now(datetime.timezone.utc).isoformat()} - Error processing SNS notification: {e}\n")
+            log_file.write(f"{datetime.now(timezone.utc).isoformat()} - Error processing SNS notification: {e}\n")
         return {"status": "error", "message": str(e)}
 
     return {"status": "ok"}
@@ -90,7 +90,7 @@ def get_recent_anomalies(limit: int = 50):
     except Exception as e:
         print(f"Error fetching recent anomalies: {e}")
         with open("app_errors.log", "a") as log_file:
-            log_file.write(f"{datetime.now(datetime.timezone.utc).isoformat()} - Error fetching recent anomalies: {e}\n")
+            log_file.write(f"{datetime.now(timezone.utc).isoformat()} - Error fetching recent anomalies: {e}\n")
         return {"status": "error", "message": str(e)}
 
 
@@ -124,7 +124,7 @@ def get_anomaly_summary():
     except Exception as e:
         print(f"Error fetching anomaly summary: {e}")
         with open("app_errors.log", "a") as log_file:
-            log_file.write(f"{datetime.now(datetime.timezone.utc).isoformat()} - Error fetching anomaly summary: {e}\n")
+            log_file.write(f"{datetime.now(timezone.utc).isoformat()} - Error fetching anomaly summary: {e}\n")
         return {"status": "error", "message": str(e)}
 
 
@@ -153,10 +153,10 @@ def get_current_baseline():
     except Exception as e:
         print(f"Error fetching current baseline: {e}")
         with open("app_errors.log", "a") as log_file:
-            log_file.write(f"{datetime.now(datetime.timezone.utc).isoformat()} - Error fetching current baseline: {e}\n")
+            log_file.write(f"{datetime.now(timezone.utc).isoformat()} - Error fetching current baseline: {e}\n")
         return {"status": "error", "message": str(e)}
 
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "bucket": BUCKET_NAME, "timestamp": datetime.now(datetime.timezone.utc).isoformat()}
+    return {"status": "ok", "bucket": BUCKET_NAME, "timestamp": datetime.now(timezone.utc).isoformat()}
