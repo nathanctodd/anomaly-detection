@@ -1,0 +1,252 @@
+
+   FastAPI   Starting production server 🚀
+ 
+             Searching for package file structure from directories with         
+             __init__.py files                                                  
+             Importing from /anomaly-detection
+ 
+    module   🐍 app.py
+ 
+      code   Importing the FastAPI app object from the module with the following
+             code:                                                              
+ 
+             from app import app
+ 
+       app   Using import string: app:app
+ 
+    server   Server started at http://0.0.0.0:8000
+    server   Documentation at http://0.0.0.0:8000/docs
+ 
+             Logs:
+ 
+      INFO   Started server process [6713]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+      INFO   Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+      INFO   15.221.161.145:63150 - "POST /notify HTTP/1.1" 200
+      INFO   15.221.5.255:43507 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T222550.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.148:46468 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T222650.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.5.252:19124 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T222750.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.160.8:18850 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T222850.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.69:40040 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T222950.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.87:27854 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223051.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.66:15452 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223151.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.163.107:62862 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223251.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.169:36468 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223351.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.110:2060 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223451.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.167:28617 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223551.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.82:29016 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223651.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.5.251:8671 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223751.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.76:19077 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223851.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.44:55516 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T223951.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.12:17068 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224052.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.9:61981 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224152.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.160.11:53356 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224252.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.148:43484 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224352.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.39:37809 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224452.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.70:17177 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224552.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.91:33568 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224652.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.93:46757 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224752.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.160.12:27094 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224852.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.74:50887 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T224952.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.37:2314 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225052.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.127:16214 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225153.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.160.11:3717 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225253.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.143:8377 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225353.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.77:49598 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225453.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.107:54686 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225553.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.73:26867 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225653.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.160.32:64122 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225753.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.160.19:52588 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225853.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 7/100 anomalies flagged
+      INFO   15.221.161.66:44707 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T225953.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.84:19036 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230053.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 7/100 anomalies flagged
+      INFO   15.221.161.79:16519 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230153.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.39:31820 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230253.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.86:14688 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230354.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.10:64566 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230454.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.54:31742 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230554.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.160.5:25719 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230654.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.137:53289 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230754.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.55:29616 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230854.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.77:23170 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T230954.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.169:23328 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231054.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.138:58869 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231154.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.163.108:65104 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231254.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.163.108:27919 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231354.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.163.0:38118 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231455.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.160.23:24458 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231555.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.90:1478 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231655.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.124:39163 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231755.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.73:61244 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231855.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 6/100 anomalies flagged
+      INFO   15.221.161.52:27496 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T231955.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   15.221.161.145:29117 - "POST /notify HTTP/1.1" 200
+Processing: s3://ygu6ax-anomaly-detection/raw/sensors_20260304T232055.csv
+  Loaded 100 rows, columns: ['timestamp', 'temperature', 'humidity', 'pressure', 'wind_speed']
+  Done: 5/100 anomalies flagged
+      INFO   204.76.203.18:46860 - "GET / HTTP/1.1" 404
+      INFO   15.221.5.252:54511 - "POST /notify HTTP/1.1" 200
